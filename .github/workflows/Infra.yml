@@ -8,6 +8,7 @@ on:
 
 jobs:
   terraform:
+    if: github.ref == 'refs/heads/test'  # This line ensures apply runs only on main
     runs-on: ubuntu-latest   
     
     steps:

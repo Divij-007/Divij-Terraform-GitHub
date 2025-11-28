@@ -15,3 +15,7 @@ variable "instance_name" {
   description = "Tag name for the instance"
   default     = "Terraform Instance"
 }
+
+variable "security_group_id" {
+  description = "ID of the security group to attach"
+}

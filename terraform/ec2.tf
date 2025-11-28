@@ -12,6 +12,7 @@ module "ec2_instance" {
   instance_type = var.instance_type
   key_name      = var.key_name
   instance_name = var.instance_name
+  security_group_id = aws_security_group.ec2_sg.id
 }
 
 variable "ami_id" {
