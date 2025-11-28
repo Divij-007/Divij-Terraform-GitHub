@@ -28,17 +28,9 @@ jobs:
         working-directory: terraform/
         run: terraform init
 
-      - name: Terraform Import
-        working-directory: terraform/
-        run: terraform import module.s3_bucket.aws_s3_bucket.mys3 divij-terraform-state-bucket
-
       - name: Terraform Validate
         working-directory: terraform/
         run: terraform validate
-
-      - name: Terraform Re-Init
-        working-directory: terraform/
-        run: terraform init -migrate-state
 
       - name: Terraform Plan
         working-directory: terraform/
