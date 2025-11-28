@@ -37,7 +37,7 @@ jobs:
         run: terraform plan
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/test'  # This line ensures apply runs only on main
+        if: github.ref == 'refs/heads/main'  # This line ensures apply runs only on main
         working-directory: terraform/
         run: terraform apply -auto-approve
 
