@@ -1,10 +1,13 @@
 
 name: Terraform Deploy
 
+#on:
+#  push:
+#    branches:
+#      - main      # This will run the pipeline whenever you push code to the main branch
+
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:   # Manual trigger 
 
 jobs:
   terraform:
