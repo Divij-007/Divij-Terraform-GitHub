@@ -40,17 +40,15 @@ jobs:
         run: terraform plan
 
 #      - name: Terraform Apply                # Auto Approval
- #       if: github.ref == 'refs/heads/main'  # This line ensures apply runs only on main
-  #      working-directory: terraform/
-   #     run: terraform apply -auto-approve
+#        working-directory: terraform/
+#        run: terraform apply -auto-approve
 
   terraform-apply:
-    name: Terraform Apply (Requires Approval)
+    name: Terraform Apply                     # Requires Approval
     needs: terraform-plan
     runs-on: ubuntu-latest
 
-    # THIS IS THE MANUAL APPROVAL GATE
-    environment:
+    environment:                              # THIS IS THE MANUAL APPROVAL GATE
       name: Production
 
     steps:
@@ -72,5 +70,6 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply                  # After Approval
+        if: github.ref == 'refs/heads/main'    # This line ensures apply runs only on main
         working-directory: terraform/
         run: terraform apply -auto-approve
