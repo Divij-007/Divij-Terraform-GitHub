@@ -19,3 +19,9 @@ variable "instance_name" {
 variable "security_group_id" {
   description = "ID of the security group to attach"
 }
+
+variable "tags" {
+  description = "Add more tags"
+  default = {}
+  type = map(string)
+}
