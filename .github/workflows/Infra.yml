@@ -50,7 +50,7 @@ jobs:
 
     steps:
       - name: Wait for Approval                # Manual Approval
-        uses: fjogeleit/approval-action@v1
+        uses: fjogeleit/yaml-update-action@main
         with:
           approvers: Divij-007
 
