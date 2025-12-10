@@ -48,10 +48,12 @@ jobs:
     needs: terraform-plan
     runs-on: ubuntu-latest
 
-    environment:                              # THIS IS THE MANUAL APPROVAL GATE
-      name: Production
-
     steps:
+      - name: Wait for Approval                # Manual Approval
+        uses: fjogeleit/approval-action@v1
+        with:
+          approvers: Divij-007
+
       - name: Checkout code
         uses: actions/checkout@v3
 
