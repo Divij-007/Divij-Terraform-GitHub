@@ -5,6 +5,7 @@ module "ec2_instance" {
   key_name      = var.key_name
   instance_name = var.instance_name
   security_group_id = aws_security_group.ec2_sg.id
+  tags = var.tags
 }
 
 variable "ami_id" {
@@ -24,4 +25,7 @@ variable "instance_name" {
 }
 
 variable "tags" {
+  description = "Add more tags"
+  default = {}
+  type = map(string)
 }
