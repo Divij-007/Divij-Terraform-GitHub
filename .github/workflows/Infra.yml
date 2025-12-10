@@ -8,6 +8,11 @@ name: Terraform Deploy
 on:
   workflow_dispatch:   # Manual trigger 
 
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
 jobs:
   terraform-plan:
     name: Terraform Plan
