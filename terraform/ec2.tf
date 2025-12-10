@@ -22,3 +22,6 @@ variable "key_name" {
 variable "instance_name" {
   description = "Tag name for the instance"
 }
+
+variable "tags" {
+}
