@@ -50,9 +50,9 @@ jobs:
 
     steps:
       - name: Wait for Approval                # Manual Approval
-        uses: fjogeleit/yaml-update-action@main
+        uses: trstringer/manual-approval@v1
         with:
-          approvers: Divij-007
+          approvers: divij
 
       - name: Checkout code
         uses: actions/checkout@v3
