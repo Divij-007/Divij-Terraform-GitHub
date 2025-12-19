@@ -8,7 +8,7 @@ tags = {
 }
 
 ec2_instances = {
-  web = {
+  web = {                           #These key names should not be touched, otherwise it results in destroy and create a new one
     instance_type = "t2.micro"
     key_name      = "webserverkey"
     environment = "dev"
