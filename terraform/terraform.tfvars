@@ -11,16 +11,16 @@ ec2_instances = {
   web = {
     instance_type = "t2.micro"
     key_name      = "webserverkey"
-    Environment   = "dev"
+    environment = "dev"
   }
   dev = {
     instance_type = "t2.micro"
     key_name      = "webserverkey"
-    Environment   = "dev"
+    environment = "dev"
   }
   uat = {
     instance_type = "t2.micro"
     key_name      = "webserverkey"
-    Environment   = "uat"
+    environment = "uat"
   }
 }
