@@ -25,3 +25,11 @@ variable "tags" {
   default = {}
   type = map(string)
 }
+
+variable "ec2_instances" {
+  type = map(object({
+    instance_type = string
+    key_name = string
+    Environment = string
+  }))
+}

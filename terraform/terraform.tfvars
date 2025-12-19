@@ -1,10 +1,26 @@
-########### EC2 TAGS ############
+########### EC2 ############
 
 ami_id = "ami-0fa3fe0fa7920f68e" # Amazon Linux 2 for us-east-1
-instance_type = "t2.micro"
-key_name = "webserverkey"
-instance_name = "Linux Web Server"
 
 tags = {
-    Environment = "Prod"
+    Owner = "Divij"
+    Project = "Terraform-Demo"
+}
+
+ec2_instances = {
+  web = {
+    instance_type = "t2.micro"
+    key_name      = "webserverkey"
+    Environment   = "dev"
+  }
+  dev = {
+    instance_type = "t2.micro"
+    key_name      = "webserverkey"
+    Environment   = "dev"
+  }
+  uat = {
+    instance_type = "t2.micro"
+    key_name      = "webserverkey"
+    Environment   = "uat"
+  }
 }
