@@ -24,3 +24,31 @@ ec2_instances = {
     environment = "uat"
   }
 }
+
+###### EC2 Alarms ######
+
+cloudwatch_alarms = {
+  HighCPUUtilization = {
+    metric_name         = "CPUUtilization"
+    namespace           = "AWS/EC2"
+    statistic           = "Average"
+    period              = 300
+    evaluation_periods  = 2
+    threshold           = 80
+    comparison_operator = "GreaterThanThreshold"
+    alarm_description   = "CPU usage above 80%"
+    dimensions          = {}
+  }
+
+  StatusCheckFailed = {
+    metric_name         = "StatusCheckFailed"
+    namespace           = "AWS/EC2"
+    statistic           = "Maximum"
+    period              = 60
+    evaluation_periods  = 1
+    threshold           = 1
+    comparison_operator = "GreaterThanOrEqualToThreshold"
+    alarm_description   = "EC2 status check failed"
+    dimensions          = {}
+  }
+}
