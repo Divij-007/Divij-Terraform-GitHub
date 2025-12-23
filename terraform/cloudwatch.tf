@@ -1,10 +1,10 @@
 module "ec2_cloudwatch_alarms" {
-  for_each = module.ec2_instance.instances
+  for_each = module.ec2_instance
 
   source = "./modules/cloudwatch"
 
-  instance_id   = each.value.id
-  instance_name = each.value.name
+  instance_id   = each.value.instance.id
+  instance_name = each.value.instance.name
   sns_topic_arn = module.sns.topic_arn
 
   alarms = var.cloudwatch_alarms

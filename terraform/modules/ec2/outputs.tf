@@ -1,9 +1,6 @@
-output "instances" {
+output "instance" {
   value = {
-    for k, i in aws_instance.instance1 :
-    k => {
-      id   = i.id
-      name = i.tags["Name"]
-    }
+    id   = aws_instance.instance1.id
+    name = aws_instance.instance1.tags["Name"]
   }
 }
