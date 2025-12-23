@@ -1,5 +1,5 @@
 module "ec2_cloudwatch_alarms" {
-  for_each = module.ec2.instances
+  for_each = module.ec2_instance.instances
 
   source = "./modules/cloudwatch"
 
