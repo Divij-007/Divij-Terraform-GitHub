@@ -14,7 +14,7 @@ permissions:
   contents: read
   
 jobs:
-  terraform-migrate:
+  tterraform-migrate:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,14 +22,19 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
+      - name: Terraform Init (loads S3 state)
+        working-directory: terraform
         run: terraform init
 
-      - name: Move security group state
-        run: |
-          terraform state mv \
-            aws_security_group.ec2_sg \
-            module.ec2_sg.aws_security_group.sg
+      - name: Verify remote state is loaded
+        working-directory: terraform
+        run: terraform state list
+
+      - name: Move SG into module
+        working-directory: terraform
+        run: terraform state mv \
+          aws_security_group.ec2_sg \
+          module.ec2_sg.aws_security_group.sg
 
   terraform-plan:
     name: Terraform Plan
