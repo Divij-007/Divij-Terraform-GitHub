@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "mys3" {
   }
 }
 
-# Ownership controls (recommended)
+# Ownership controls
 resource "aws_s3_bucket_ownership_controls" "ownership" {
   bucket = aws_s3_bucket.mys3.id
 
@@ -16,7 +16,7 @@ resource "aws_s3_bucket_ownership_controls" "ownership" {
   }
 }
 
-# Public access block (recommended)
+# Public access blocked
 resource "aws_s3_bucket_public_access_block" "public_access" {
   bucket                  = aws_s3_bucket.mys3.id
   block_public_acls       = true

@@ -1,3 +1,9 @@
+###### SNS ######
+
+sns_display_name = "Alert"
+protocol = "email"
+email = "divijdivij007@gmail.com"
+
 ########### EC2 ############
 
 ami_id = "ami-0fa3fe0fa7920f68e" # Amazon Linux 2 for us-east-1

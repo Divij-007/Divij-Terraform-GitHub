@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarms" {
-  for_each = var.alarms
+  for_each = var.alarms                                                # To create alarms like CPU, RAM, Storage, if no for_each - Each instance ends up with only one alert
 
   alarm_name          = "${each.key}-${var.instance_name}"
   metric_name         = each.value.metric_name
@@ -14,7 +14,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarms" {
   dimensions = merge(
     each.value.dimensions,
     {
-      InstanceId = var.instance_id
+      InstanceId = var.instance_id                          # Injecting instance id's from the output through the root
     }
   )
 

@@ -5,7 +5,6 @@ variable "sns_display_name" {
 
 variable "email" {
   description = "Email ID for receiving alerts"
-  default = "divijdivij007@gmail.com"
   type = string
 }
 
