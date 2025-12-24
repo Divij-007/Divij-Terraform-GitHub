@@ -6,7 +6,7 @@ module "ec2_instance" {
   instance_type = each.value.instance_type
   key_name      = each.value.key_name
   instance_name = "linux-${each.key}"
-  security_group_id = aws_security_group.ec2_sg.id
+  security_group_id = module.ec2_sg.id            # Calling the sg id from sg module
   
   tags = merge(
     var.tags,
