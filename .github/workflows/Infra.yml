@@ -14,35 +14,6 @@ permissions:
   contents: read
   
 jobs:
-  terraform-migrate:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: hashicorp/setup-terraform@v3
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: Terraform Init (loads S3 state)
-        working-directory: terraform
-        run: terraform init
-
-      - name: Verify remote state is loaded
-        working-directory: terraform
-        run: terraform state list
-
-      - name: Move SG into module
-        working-directory: terraform
-        run: terraform state mv \
-          aws_security_group.ec2_sg \
-          module.ec2_sg.aws_security_group.sg
-
   terraform-plan:
     name: Terraform Plan
     runs-on: ubuntu-latest   
