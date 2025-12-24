@@ -12,8 +12,25 @@ permissions:
   issues: write
   pull-requests: write
   contents: read
-
+  
 jobs:
+  terraform-migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Move security group state
+        run: |
+          terraform state mv \
+            aws_security_group.ec2_sg \
+            module.ec2_sg.aws_security_group.sg
+
   terraform-plan:
     name: Terraform Plan
     runs-on: ubuntu-latest   
